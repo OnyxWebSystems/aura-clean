@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[branch "main"]
+	gk-last-accessed = 2025-12-27T22:49:49.773Z
+	gk-last-modified = 2025-12-27T22:05:45.092Z
+[remote "origin"]
+	url = https://github.com/OnyxWebSystems/aura-clean.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
