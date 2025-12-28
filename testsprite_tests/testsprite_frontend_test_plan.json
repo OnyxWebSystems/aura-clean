@@ -1,0 +1,360 @@
+[
+  {
+    "id": "TC001",
+    "title": "Home Page Load and Content Display",
+    "description": "Verify that the home page loads within 2 seconds and all main sections (HeroSection, ServicesOverview, HowItWorks, WhyChooseUs, Testimonials, CTASection) render properly with correct content.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the home page ('/')"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page loads within 2 seconds"
+      },
+      {
+        "type": "assertion",
+        "description": "Check hero section with CTA buttons is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Check services overview cards are visible with accurate service summaries"
+      },
+      {
+        "type": "assertion",
+        "description": "Validate how it works 3-step process section appears"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify trust indicators and customer testimonials are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure call-to-action section is visible and interactive"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Services Page Filtering and Service Details Display",
+    "description": "Verify services page loads correctly, displays all cleaning services, allows filtering, and shows detailed info on selected service.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the services page ('/services')"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure all available cleaning services are fetched and displayed from Supabase"
+      },
+      {
+        "type": "action",
+        "description": "Use filter controls to filter services by criteria (e.g., service type or price)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that filtered services list updates accordingly"
+      },
+      {
+        "type": "action",
+        "description": "Select a service to view detailed information"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that service detail includes price and full description"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Booking Wizard: Successful Booking Flow",
+    "description": "Verify successful completion of the four-step booking wizard with correct input validations, price calculation, backend integration, and email notification.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to booking page ('/booking')"
+      },
+      {
+        "type": "action",
+        "description": "Step 1: Select a cleaning service"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm service selection is valid and reflected in price calculation"
+      },
+      {
+        "type": "action",
+        "description": "Step 2: Select a valid future date and time in the calendar component"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify date and time cannot be in the past and validation errors are shown if attempted"
+      },
+      {
+        "type": "action",
+        "description": "Step 3: Enter valid customer details (name, email, phone)"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm all form fields validate inputs correctly and display errors for invalid data"
+      },
+      {
+        "type": "action",
+        "description": "Step 4: Review booking details and confirm the booking"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm final price calculation matches base price and property size calculation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify booking record is created in Supabase database"
+      },
+      {
+        "type": "assertion",
+        "description": "Check email confirmation is sent to the customer via Resend"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Booking Wizard: Input Validation and Error Handling",
+    "description": "Verify the booking wizard prevents progression on invalid input including empty fields, invalid emails, and past dates.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to booking page ('/booking')"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to proceed without selecting a service"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error message prompts to select a service"
+      },
+      {
+        "type": "action",
+        "description": "Select a service then choose a past date"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify validation prevents progressing and displays error for past date"
+      },
+      {
+        "type": "action",
+        "description": "Enter incomplete or invalid customer details (e.g., invalid email format, empty required fields)"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm relevant error messages appear and block next step"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "User Authentication: Login, Logout, and Protected Routes",
+    "description": "Verify user login and logout functionality using Supabase Auth, session management, and access restrictions to protected routes like dashboard and admin dashboard.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to login page or trigger login flow"
+      },
+      {
+        "type": "action",
+        "description": "Input valid user credentials and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is authenticated and redirected to dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Access protected routes '/dashboard' and '/admin'"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify dashboard is accessible to authenticated user"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify admin dashboard is inaccessible to non-admin users with proper redirect or error"
+      },
+      {
+        "type": "action",
+        "description": "Trigger logout"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user session is terminated and access to protected routes is denied"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "User Dashboard Booking Management",
+    "description": "Verify that an authenticated user can view upcoming and past bookings, cancel bookings, and see booking status updates.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as a standard user and navigate to user dashboard ('/dashboard')"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify upcoming and past bookings are displayed correctly, reflecting accurate booking statuses"
+      },
+      {
+        "type": "action",
+        "description": "Select an upcoming booking and trigger cancellation"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm booking status updates to canceled both visually and in backend"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify email notification is sent for booking cancellation"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Admin Dashboard - Booking and Message Management with Email Notifications",
+    "description": "Verify that admin users can view, update booking statuses, manage contact messages, and that updates trigger appropriate email notifications.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Login as admin and navigate to admin dashboard ('/admin')"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure admin overview statistics load and reflect current system state"
+      },
+      {
+        "type": "action",
+        "description": "View all bookings and update their status (e.g., confirmed, completed, canceled)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify status updates reflect in UI and database"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm email notifications are sent to users on booking status changes"
+      },
+      {
+        "type": "action",
+        "description": "View contact messages and update their statuses"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure message status updates persist and trigger notification emails if applicable"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Contact Form Validation and Email Notification",
+    "description": "Verify that the contact form on the contact page validates inputs, stores messages in Supabase, and sends confirmation emails.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to contact page ('/contact')"
+      },
+      {
+        "type": "action",
+        "description": "Fill in contact form fields with valid inputs and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify form validates subject selection, email format, and required fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm message is stored in Supabase 'contact_messages' table"
+      },
+      {
+        "type": "assertion",
+        "description": "Check confirmation email is sent to the user via Resend"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Responsive Design - Mobile, Tablet, Desktop Layout Consistency",
+    "description": "Verify that the entire app layout and navigation adapt correctly to mobile, tablet, and desktop screen sizes with accessible ARIA attributes.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load the app on devices or emulators simulating mobile, tablet, and desktop screen sizes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify navigation menus adapt (e.g., mobile menu appearance)"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure all UI components resize and rearrange appropriately without content overflow or distortion"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that ARIA attributes are present and enable keyboard navigation and screen reader accessibility"
+      },
+      {
+        "type": "action",
+        "description": "Navigate through pages and key features on each device size"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm animations and transitions remain smooth on all screen sizes"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Accessibility Compliance Test for WCAG 2.1 AA",
+    "description": "Perform comprehensive accessibility checks ensuring compliance with WCAG 2.1 AA including keyboard usability and ARIA labels.",
+    "category": "ui",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Use keyboard navigation to tab through all interactive elements on key pages (home, booking wizard, dashboard, admin)"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm all interactive elements are reachable and usable via keyboard alone"
+      },
+      {
+        "type": "action",
+        "description": "In a screen reader, navigate through the app and verify ARIA labels, roles, and landmarks are descriptive and accurate"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify color contrast ratios meet WCAG 2.1 AA minimums"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure error messages and validation feedback are announced or perceptible to assistive technologies"
+      }
+    ]
+  }
+]

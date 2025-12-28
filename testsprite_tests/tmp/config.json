@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000//",
+  "executionArgs": {
+    "projectName": "Aura Clean",
+    "projectPath": "C:\\Onyx Web Systems\\Portfolio\\Aura Clean",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-ghaYztCkyi1WbKgfKvgA7FBSxXJaZl5F8B-i0sav4zXV5d4DromyAj2_QfPsJ1WbYQLwa1_8dA-kvxhdoBWEOH6pKddDPXZpGtSyyKez-_DPqcUxYqa9I0jaxEfrQlTnOU0"
+    }
+  },
+  "proxy": "http://7845476d-8fc8-4803-a612-cc907e8b602f:AeR5ZpX7PiVNl8EopMenu7IjxI1NBvMs@tun.testsprite.com:8080"
+}

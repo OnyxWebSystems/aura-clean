@@ -1,0 +1,208 @@
+{
+  "project_name": "Aura Clean - Premium Cleaning Services",
+  "project_type": "frontend",
+  "tech_stack": {
+    "framework": "React 18.2.0",
+    "language": "TypeScript 5.2.2",
+    "build_tool": "Vite 5.0.8",
+    "styling": "Tailwind CSS 3.4.0",
+    "routing": "React Router DOM 6.21.0",
+    "state_management": "React Query (@tanstack/react-query 5.17.0)",
+    "animations": "Framer Motion 10.16.16",
+    "icons": "Lucide React 0.303.0",
+    "date_handling": "date-fns 3.0.0",
+    "backend": "Supabase (@supabase/supabase-js 2.39.0)",
+    "email_service": "Resend 2.1.0"
+  },
+  "features": {
+    "authentication": {
+      "provider": "Supabase Auth",
+      "features": [
+        "User login/logout",
+        "User session management",
+        "User profile dropdown in navbar",
+        "Protected routes (Dashboard, AdminDashboard)"
+      ]
+    },
+    "pages": {
+      "Home": {
+        "path": "/",
+        "components": [
+          "HeroSection",
+          "ServicesOverview",
+          "HowItWorks",
+          "WhyChooseUs",
+          "Testimonials",
+          "CTASection"
+        ],
+        "features": [
+          "Hero section with CTA buttons",
+          "Service overview cards",
+          "How it works 3-step process",
+          "Trust indicators",
+          "Customer testimonials",
+          "Call-to-action section"
+        ]
+      },
+      "Services": {
+        "path": "/services",
+        "features": [
+          "Display all cleaning services",
+          "Service details with pricing",
+          "Service filtering",
+          "Book service CTA",
+          "Fetches from Supabase database"
+        ]
+      },
+      "Booking": {
+        "path": "/booking",
+        "features": [
+          "4-step booking wizard",
+          "Service selection",
+          "Date and time selection (Calendar component)",
+          "Customer details form",
+          "Booking confirmation",
+          "Price calculation based on property size",
+          "Integration with Supabase",
+          "Email confirmation via Resend"
+        ],
+        "steps": [
+          "Service Selection",
+          "Schedule Selection",
+          "Details Form",
+          "Confirmation"
+        ]
+      },
+      "Contact": {
+        "path": "/contact",
+        "features": [
+          "Contact form with validation",
+          "Subject dropdown",
+          "Email notifications via Resend",
+          "Stores messages in Supabase",
+          "Contact information display"
+        ]
+      },
+      "About": {
+        "path": "/about",
+        "features": [
+          "Company story and mission",
+          "Core values display",
+          "Timeline of milestones",
+          "Leadership team",
+          "Trust indicators"
+        ]
+      },
+      "Dashboard": {
+        "path": "/dashboard",
+        "features": [
+          "User-specific bookings view",
+          "Upcoming and past bookings tabs",
+          "Booking cancellation",
+          "Booking status display",
+          "Protected route (requires authentication)",
+          "Email notifications on cancellation"
+        ]
+      },
+      "AdminDashboard": {
+        "path": "/admin",
+        "features": [
+          "Admin overview with statistics",
+          "All bookings management",
+          "Contact messages management",
+          "Booking status updates",
+          "Message status updates",
+          "Email notifications",
+          "Protected route (requires admin role)"
+        ]
+      }
+    },
+    "components": {
+      "layout": [
+        "Navbar - Two-tier navigation with user profile dropdown",
+        "Layout - Main layout wrapper",
+        "ScrollToTop - Scroll to top button"
+      ],
+      "booking": [
+        "ServiceSelection",
+        "ScheduleSelection",
+        "DetailsForm",
+        "BookingConfirmation",
+        "BookingSteps"
+      ],
+      "admin": [
+        "AdminSidebar",
+        "AdminBookingsTable",
+        "AdminStats"
+      ],
+      "ui": [
+        "Button",
+        "Badge",
+        "Card",
+        "Dialog",
+        "Input",
+        "Textarea",
+        "Label",
+        "Select",
+        "Tabs",
+        "DropdownMenu",
+        "Calendar",
+        "Table"
+      ]
+    },
+    "database": {
+      "provider": "Supabase",
+      "tables": [
+        "bookings - Customer booking records",
+        "services - Available cleaning services",
+        "contact_messages - Contact form submissions",
+        "users - User accounts (optional)"
+      ],
+      "features": [
+        "Row Level Security (RLS) enabled",
+        "Real-time subscriptions",
+        "Automatic timestamps"
+      ]
+    },
+    "email": {
+      "provider": "Resend",
+      "templates": [
+        "Booking confirmation",
+        "Booking status updates",
+        "Contact form confirmation",
+        "Admin notifications"
+      ]
+    },
+    "utilities": {
+      "bookingStatus": "Centralized booking status management",
+      "pricing": "Price calculation based on property size",
+      "serviceHelpers": "Service-related helper functions",
+      "accessibility": "ARIA attributes and accessibility utilities",
+      "loadingStates": "Loading, empty, and error state management"
+    }
+  },
+  "routes": [
+    "/ - Home page",
+    "/services - Services listing",
+    "/booking - Booking wizard",
+    "/contact - Contact form",
+    "/about - About page",
+    "/dashboard - User dashboard",
+    "/admin - Admin dashboard"
+  ],
+  "development": {
+    "port": 3000,
+    "build_command": "npm run build",
+    "dev_command": "npm run dev",
+    "output_directory": "dist"
+  },
+  "environment_variables": [
+    "VITE_SUPABASE_URL",
+    "VITE_SUPABASE_ANON_KEY",
+    "VITE_SUPABASE_SERVICE_ROLE_KEY (local scripts only)",
+    "VITE_RESEND_API_KEY",
+    "VITE_RESEND_FROM_EMAIL",
+    "VITE_RESEND_REPLY_TO"
+  ]
+}
+
